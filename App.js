@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {Text, View, ImageBackground} from 'react-native';
+import styles from "./src/styles/styles.js";
 import Input from "./src/components/Input";
 import Current from "./src/components/Current";
 import Hourly from "./src/components/Hourly";
@@ -7,7 +8,7 @@ import Daily from "./src/components/Daily";
 
 export default function App() {
   const [weatherObj, setWeatherObj] = useState();
-  const [currentWeather, setCurrentWeather] = useState("");
+  const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
 
   function handleZipSubmit(zip) {
     //Get latitude and longitude coordinates from zip code
@@ -46,7 +47,7 @@ export default function App() {
     if (now < current.sunrise || now > current.sunset) {
       conditionArr.push("Night");
     }
-    //Selects icon/background based on current weather conditions
+    //Set currentWeather based on current weather conditions
     conditionArr.includes("Snow") ? setCurrentWeather("snow")
     : conditionArr.some(el => el === "Thunderstorm" ||
                               el === "Squall" ||
@@ -68,11 +69,38 @@ export default function App() {
     : setCurrentWeather("");
   }
 
+  //Set background image url based on currentWeather (must be static url)
+  let backgroundImage = null;
+  switch(currentWeather) {
+    case "cloudy":
+      backgroundImage = require("./src/images/cloudy.jpg");
+      break;
+    case "night":
+      backgroundImage = require("./src/images/night.jpg");
+      break;
+    case "partly-cloudy":
+      backgroundImage = require("./src/images/partly-cloudy.jpg");
+      break;
+    case "rain":
+      backgroundImage = require("./src/images/rain.jpg");
+      break;
+    case "snow":
+      backgroundImage = require("./src/images/snow.jpg");
+      break;
+    case "sunny":
+      backgroundImage = require("./src/images/sunny.jpg");
+      break;
+    case "thunderstorm":
+      backgroundImage = require("./src/images/thunderstorm.jpg");
+      break;
+  }
+
   return (
-    <View style={styles.container}>
-      {/* <div className="app">
-        <div className={"background " + currentWeather}></div>
-        <Input handleZipSubmit={handleZipSubmit} />
+    <View style={styles.app}>
+      <ImageBackground source={backgroundImage}
+                       style={{width: "100%", height: "100%"}}
+      >
+        {/* <Input handleZipSubmit={handleZipSubmit} />
         {
         weatherObj ?
           <div className="output-container">
@@ -83,18 +111,10 @@ export default function App() {
             <Daily weatherObj={weatherObj} />
           </div>
         : null
-        }      
-      </div> */}
-      <Text>Hello world</Text>
+        }       */}
+        <Text>Hello world</Text>
+      </ImageBackground>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

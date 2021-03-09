@@ -100,7 +100,8 @@ export default function App() {
       <ImageBackground source={backgroundImage}
                        style={{width: "100%", height: "100%"}}
       >
-        {/* <Input handleZipSubmit={handleZipSubmit} />
+        <Input handleZipSubmit={handleZipSubmit} />
+        {/* 
         {
         weatherObj ?
           <div className="output-container">

@@ -31,12 +31,7 @@ inputContainer: {
   width: "90%",
   maxWidth: 300,
   padding: 10,
-<<<<<<< HEAD
   marginVertical: 40
-=======
-  marginVertical: 20,
-  marginHorizontal: "auto"
->>>>>>> f4cf4c05aaed2e7c956d3a81f876120a897ad960
 },
 
 zipLabel: {

@@ -18,7 +18,7 @@ function Input(props) {
 
   return (
     <View style={styles.inputContainer} className="input-container">
-      <Text htmlFor="zip-input" className="zip-label">Enter your Zip code (USA only)</Text>
+      <Text htmlFor="zip-input" style={styles.zipLabel}>Enter your Zip code (USA only)</Text>
       <TextInput id="zip-input"
              type="text"
              value={zip}

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TouchableWithoutFeedback} from 'react-native';
 
 const backgroundColor = "rgba(0,0,0,0.5)";
 const borderColor = "rgba(0,0,0,0.6)";
@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
 
 app: {
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  lineHeight: 1.6
 },
 
 outputContainer: {
@@ -31,6 +32,16 @@ inputContainer: {
   padding: 10,
   marginVertical: 20,
   marginHorizontal: "auto"
+},
+
+zipLabel: {
+  color: "white",
+  fontFamily: "Ubuntu_700Bold",
+  textAlign: "center",
+  fontSize: 18,
+  marginTop: 0,
+  marginHorizontal: 0,
+  marginBottom: 5
 }
 
 });

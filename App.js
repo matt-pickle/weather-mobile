@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Text, View, ImageBackground} from 'react-native';
+import AppLoading from "expo-app-loading";
+import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import styles from "./src/styles/styles.js";
 import Input from "./src/components/Input";
 import Current from "./src/components/Current";
@@ -95,27 +97,36 @@ export default function App() {
       break;
   }
 
-  return (
-    <View style={styles.app}>
-      <ImageBackground source={backgroundImage}
-                       style={{width: "100%", height: "100%"}}
-      >
-        <Input handleZipSubmit={handleZipSubmit} />
-        {/* 
-        {
-        weatherObj ?
-          <div className="output-container">
-            <Current weatherObj={weatherObj}
-                    currentWeather={currentWeather}
-            />
-            <Hourly weatherObj={weatherObj} />
-            <Daily weatherObj={weatherObj} />
-          </div>
-        : null
-        }       */}
-        <Text>Hello world</Text>
-      </ImageBackground>
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    Ubuntu_400Regular,
+    Ubuntu_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <View style={styles.app}>
+        <ImageBackground source={backgroundImage}
+                        style={{width: "100%", height: "100%"}}
+        >
+          <Input handleZipSubmit={handleZipSubmit} />
+          {/* 
+          {
+          weatherObj ?
+            <div className="output-container">
+              <Current weatherObj={weatherObj}
+                      currentWeather={currentWeather}
+              />
+              <Hourly weatherObj={weatherObj} />
+              <Daily weatherObj={weatherObj} />
+            </div>
+          : null
+          }       */}
+          <Text>Hello world</Text>
+        </ImageBackground>
+      </View>
+    );
+  }
 }
 

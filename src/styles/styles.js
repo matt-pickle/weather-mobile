@@ -41,7 +41,39 @@ zipLabel: {
   fontSize: 18,
   marginTop: 0,
   marginHorizontal: 0,
-  marginBottom: 5
+  marginBottom: 15
+},
+
+zipInput: {
+  backgroundColor: "white",
+  fontSize: 18,
+  textAlign: "center",
+  height: 40,
+  borderRadius: 5,
+  marginTop: 0,
+  marginHorizontal: 0,
+  marginBottom: 15
+},
+
+button: {
+  backgroundColor: "white",
+  height: 40,
+  borderRadius: 5,
+  justifyContent: "center"
+},
+
+pressedButton: {
+  backgroundColor: borderColor,
+  height: 40,
+  borderRadius: 5,
+  justifyContent: "center"
+},
+
+buttonText: {
+  color: "black",
+  fontFamily: "Ubuntu_700Bold",
+  fontSize: 18,
+  textAlign: "center"
 }
 
 });

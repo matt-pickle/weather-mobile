@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput} from "react-native";
-import Button from "./Button";
+import {View, Text, TextInput, Pressable} from "react-native";
+// import Button from "./Button";
 import styles from "../styles/styles.js";
 
 function Input(props) { 
   const [zip, setZip] = useState("");
+  const [isPressed, setIsPressed] = useState(false);
 
-  function handleChange(event) {
-    setZip(event.target.value);
+  function handleChange(text) {
+    setZip(text);
   }
 
   function handleSubmit(event) {
@@ -17,16 +18,20 @@ function Input(props) {
   }
 
   return (
-    <View style={styles.inputContainer} className="input-container">
-      <Text htmlFor="zip-input" style={styles.zipLabel}>Enter your Zip code (USA only)</Text>
-      <TextInput id="zip-input"
-             type="text"
-             value={zip}
-             onChange={handleChange}
+    <View style={styles.inputContainer}>
+      <Text style={styles.zipLabel}>Enter your Zip code (USA only)</Text>
+      <TextInput style={styles.zipInput}
+                 type="text"
+                 value={zip}
+                 onChangeText={handleChange}
       />
-      {/* <Button text="Submit"
-              onClick={handleSubmit}
-      /> */}
+      <Pressable style={isPressed ? styles.pressedButton : styles.button}
+                 onPressIn={() => setIsPressed(true)}
+                 onPressOut={() => setIsPressed(false)}
+                 onPress={handleSubmit}
+      >
+        <Text style={styles.buttonText}>Submit</Text>
+      </Pressable>
     </View>
   );
 }

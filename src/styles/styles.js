@@ -27,7 +27,6 @@ inputContainer: {
   borderWidth: 2,
   borderStyle: "solid",
   borderRadius: 10,
-  display: "flex",
   width: "90%",
   maxWidth: 300,
   padding: 10,
@@ -74,6 +73,21 @@ buttonText: {
   fontFamily: "Ubuntu_700Bold",
   fontSize: 18,
   textAlign: "center"
+},
+
+//CURRENT
+
+currentContainer: {
+  alignSelf: "center",
+  backgroundColor: backgroundColor,
+  borderColor: borderColor,
+  borderWidth: 2,
+  borderStyle: "solid",
+  borderRadius: 10,
+  maxWidth: "90%",
+  padding: 10,
+  marginVertical: 0,
+  marginHorizontal: 30
 }
 
 });

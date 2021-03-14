@@ -112,18 +112,17 @@ export default function App() {
                          style={{width: "100%", height: "100%"}}
         >
           <Input handleZipSubmit={handleZipSubmit} />
-          {/* 
           {
-          weatherObj ?
-            <div className="output-container">
-              <Current weatherObj={weatherObj}
-                      currentWeather={currentWeather}
-              />
-              <Hourly weatherObj={weatherObj} />
-              <Daily weatherObj={weatherObj} />
-            </div>
-          : null
-          }       */}
+            weatherObj ?
+              <View>
+                <Current weatherObj={weatherObj}
+                         currentWeather={currentWeather}
+                />
+                {/* <Hourly weatherObj={weatherObj} />
+                <Daily weatherObj={weatherObj} /> */}
+              </View>
+            : null
+          }      
         </ImageBackground>
       </View>
     );

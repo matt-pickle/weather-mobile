@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
+import {REACT_APP_WEATHER_KEY} from "@env";
 import styles from "./src/styles/styles.js";
 import Input from "./src/components/Input";
 import Current from "./src/components/Current";
@@ -14,12 +15,12 @@ export default function App() {
 
   function handleZipSubmit(zip) {
     //Get latitude and longitude coordinates from zip code
-    fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${process.env.REACT_APP_WEATHER_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${REACT_APP_WEATHER_KEY}`)
     .then(res => {
       if (res.ok) {
         res.json().then(data => {
           //Get weather data from coordinates
-          fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${process.env.REACT_APP_WEATHER_KEY}`)
+          fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${REACT_APP_WEATHER_KEY}`)
           .then(res => {
             if (res.ok) {
               res.json().then(data => {
@@ -123,7 +124,6 @@ export default function App() {
             </div>
           : null
           }       */}
-          <Text>Hello world</Text>
         </ImageBackground>
       </View>
     );

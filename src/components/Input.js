@@ -11,10 +11,9 @@ function Input(props) {
     setZip(text);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit() {
     props.handleZipSubmit(zip);
     setZip("");
-    event.preventDefault();
   }
 
   return (

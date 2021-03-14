@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, ImageBackground} from 'react-native';
+import {ScrollView, View, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";
@@ -111,18 +111,20 @@ export default function App() {
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
+          <ScrollView>
           <Input handleZipSubmit={handleZipSubmit} />
           {
             weatherObj ?
-              <View>
+              // <View style={{backgroundColor: "red"}}>
                 <Current weatherObj={weatherObj}
                          currentWeather={currentWeather}
                 />
-                {/* <Hourly weatherObj={weatherObj} />
-                <Daily weatherObj={weatherObj} /> */}
-              </View>
+                // <Hourly weatherObj={weatherObj} />
+                //<Daily weatherObj={weatherObj} />
+              // </View>
             : null
-          }      
+          }
+          </ScrollView>      
         </ImageBackground>
       </View>
     );

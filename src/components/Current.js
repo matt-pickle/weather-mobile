@@ -46,11 +46,13 @@ function Current(props) {
   return (
     <View style={styles.currentContainer}>
       <Image source={icon} style={styles.currentIcon} />
-      <Text className="current-temp">{Math.round(current.temp)}<Text className="degree">&deg;</Text></Text>
-      <Text className="current-feels-like">Feels Like {Math.round(current.feels_like)}&deg;</Text>
-      <Text className="current-description">{description}</Text>
-      <Text className="current-humidity">Humidity: {current.humidity}%</Text>
-      <Text className="current-wind-speed">Wind Speed: {Math.round(current.wind_speed)}mph</Text>
+      <Text style={styles.currentDescription}>{description}</Text>
+      <Text style={styles.currentTemp}>{Math.round(current.temp)}
+        <Text style={styles.degree}>&deg;</Text>
+      </Text>
+      <Text style={styles.currentSmallText}>Feels Like {Math.round(current.feels_like)}&deg;</Text>
+      <Text style={styles.currentSmallText}>Humidity: {current.humidity}%</Text>
+      <Text style={styles.currentSmallText}>Wind Speed: {Math.round(current.wind_speed)}mph</Text>
     </View>
   );
 }

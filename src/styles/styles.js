@@ -2,20 +2,15 @@ import {StyleSheet, TouchableWithoutFeedback} from 'react-native';
 
 const backgroundColor = "rgba(0,0,0,0.5)";
 const borderColor = "rgba(0,0,0,0.6)";
+const boldFont = "Ubuntu_700Bold";
+const lightFont ="Ubuntu_400Regular";
 
 const styles = StyleSheet.create({
 
 //GENERAL
 
 app: {
-  display: "flex",
-  flexDirection: "column",
   lineHeight: 1.6
-},
-
-outputContainer: {
-  display: "flex",
-  flexDirection: "column"
 },
 
 //INPUT
@@ -35,7 +30,7 @@ inputContainer: {
 
 zipLabel: {
   color: "white",
-  fontFamily: "Ubuntu_700Bold",
+  fontFamily: boldFont,
   textAlign: "center",
   fontSize: 18,
   marginTop: 0,
@@ -79,6 +74,7 @@ buttonText: {
 
 currentContainer: {
   alignSelf: "center",
+  alignItems: "center",
   backgroundColor: backgroundColor,
   borderColor: borderColor,
   borderWidth: 2,
@@ -88,7 +84,40 @@ currentContainer: {
   padding: 10,
   marginVertical: 0,
   marginHorizontal: 30
-}
+},
+
+currentIcon: {
+  resizeMode: "contain",
+  width: 150,
+  height: 150,  
+  marginBottom: 10
+},
+
+currentDescription: {
+  fontSize: 20,
+  color: "white",
+  fontFamily: boldFont,
+  textTransform: "capitalize",
+},
+
+currentTemp: {
+  fontSize: 90,
+  color: "white",
+  fontFamily: boldFont,
+  lineHeight: 100,
+  height: 95
+},
+
+degree: {
+  fontFamily: lightFont
+},
+
+currentSmallText: {
+  fontSize: 15,
+  color: "white",
+  fontFamily: lightFont,
+  lineHeight: 25
+},
 
 });
 

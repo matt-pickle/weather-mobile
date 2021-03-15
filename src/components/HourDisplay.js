@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Text, View, Image} from "react-native";
 
 function HourDisplay(props) {  
-  const [description, setDescription] = useState("");
-  const [icon, setIcon] = useState("");
 
   const now = new Date(props.dt * 1000);
   const day = now.getDay();
@@ -20,51 +18,54 @@ function HourDisplay(props) {
                       : hour;
   const ampm = now.getHours() < 12 ? "am" : "pm";
   
-  useEffect(() => {
-    //Creates weather description string
-    props.weather.forEach((item, index) => {
-      if (index === 0) {
-        setDescription(item.description);
-      } else {
-        setDescription(description + ", " + item.description);
-      }
-    });
-    //Creates array of weather conditions
-    let conditionArr = [];
-    props.weather.forEach(item => {
-      conditionArr.push(item.main, item.id);
-    });
-    //Checks for night time
-    const now = props.dt;
-    if (now < props.sunrise ||
-        now > props.sunset && now < props.tomorrowSunrise ||
-        now > props.tomorrowSunset && now < props.dayAfterTomorrowSunrise) {
-      conditionArr.push("Night");
+  //Creates weather description string
+  let description = "";
+  props.weather.forEach((item, index) => {
+    if (index === 0) {
+      description = item.description;
+    } else {
+      description = description + ", " + item.description;
     }
-    //Selects icon based on weather conditions
-    conditionArr.includes("Snow") ? setIcon(require("../images/snow.png"))
-    : conditionArr.some(el => el === "Thunderstorm" || el === "Squall" || el === "Tornado") ? setIcon(require("../images/thunderstorm.png"))
-    : conditionArr.some(el => el === "Drizzle" || el === "Rain") ? setIcon(require("../images/rain.png"))
-    : conditionArr.some(el => el === 804 ||
-                        el === "Fog" ||
-                        el === "Smoke" ||
-                        el === "Mist" ||
-                        el === "Haze" ||
-                        el === "Dust" ||
-                        el === "Sand" ||
-                        el === "Ash") ?
-                        setIcon(require("../images/cloudy.png"))
-    : conditionArr.includes("Night") ? setIcon(require("../images/night.png"))
-    : conditionArr.some(el => el === 802 || el === 803) ? setIcon(require("../images/partly-cloudy.png"))
-    : conditionArr.some(el => el === "Clear" || el === 801) ? setIcon(require("../images/sunny.png"))
-    : setIcon("");
-  }, []);
+  });
+
+  //Creates array of weather conditions
+  let conditionArr = [];
+  props.weather.forEach(item => {
+    conditionArr.push(item.main, item.id);
+  });
+
+  //Checks for night time
+  const timeOfDay = props.dt;
+  if (timeOfDay < props.sunrise ||
+      timeOfDay > props.sunset && timeOfDay < props.tomorrowSunrise ||
+      timeOfDay > props.tomorrowSunset && timeOfDay < props.dayAfterTomorrowSunrise) {
+    conditionArr.push("Night");
+  }
+
+  //Selects icon based on weather conditions (must be static)
+  let icon = require("../images/partly-cloudy.png");
+  conditionArr.includes("Snow") ? icon = require("../images/snow.png")
+  : conditionArr.some(el => el === "Thunderstorm" || el === "Squall" || el === "Tornado") ? icon = require("../images/thunderstorm.png")
+  : conditionArr.some(el => el === "Drizzle" || el === "Rain") ? icon = require("../images/rain.png")
+  : conditionArr.some(el => el === 804 ||
+                      el === "Fog" ||
+                      el === "Smoke" ||
+                      el === "Mist" ||
+                      el === "Haze" ||
+                      el === "Dust" ||
+                      el === "Sand" ||
+                      el === "Ash") ?
+                      icon = require("../images/cloudy.png")
+  : conditionArr.includes("Night") ? icon = require("../images/night.png")
+  : conditionArr.some(el => el === 802 || el === 803) ? icon = require("../images/partly-cloudy.png")
+  : conditionArr.some(el => el === "Clear" || el === 801) ? icon = require("../images/sunny.png")
+  : null;
 
   return (
     <View className="hour-display-container">
       <Text className="hourly-hour">{hourConverted}{ampm}</Text>
       <Text className="hourly-day">{weekDay}</Text>
-      <Image sourc={icon} className="hourly-icon" />
+      <Image source={icon} className="hourly-icon" />
       <Text className="hourly-description">{description}</Text>
       <Text className="hourly-temp">{Math.round(props.temp)}
         <Text className="degree">&deg;</Text>

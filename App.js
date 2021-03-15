@@ -115,13 +115,13 @@ export default function App() {
           <Input handleZipSubmit={handleZipSubmit} />
           {
             weatherObj ?
-              // <View style={{backgroundColor: "red"}}>
+              <View>
                 <Current weatherObj={weatherObj}
                          currentWeather={currentWeather}
                 />
-                // <Hourly weatherObj={weatherObj} />
-                //<Daily weatherObj={weatherObj} />
-              // </View>
+                <Hourly weatherObj={weatherObj} />
+                {/* <Daily weatherObj={weatherObj} /> */}
+              </View>
             : null
           }
           </ScrollView>      

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, ScrollView} from "react-native";
+import styles from '../styles/styles';
 import HourDisplay from "./HourDisplay";
 
 function Hourly(props) { 
@@ -23,11 +24,12 @@ function Hourly(props) {
   });
   
   return (
-    <View className="hourly-container">
-      <Text className="section-title">Hourly Forecast</Text>
-      <ScrollView className="hour-displays-container">
+    <View>
+      <Text style={styles.sectionTitle}>Hourly Forecast</Text>
+      <ScrollView style={styles.hourlyContainer}
+                  horizontal={true}
+      >
         {hourDisplays}
-        {/* <div className="right-margin-spacer"></div> */}
       </ScrollView>
     </View>
   );

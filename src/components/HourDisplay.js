@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, Image} from "react-native";
+import styles from '../styles/styles';
 
 function HourDisplay(props) {  
 
@@ -62,20 +63,20 @@ function HourDisplay(props) {
   : null;
 
   return (
-    <View className="hour-display-container">
-      <Text className="hourly-hour">{hourConverted}{ampm}</Text>
-      <Text className="hourly-day">{weekDay}</Text>
-      <Image source={icon} className="hourly-icon" />
-      <Text className="hourly-description">{description}</Text>
-      <Text className="hourly-temp">{Math.round(props.temp)}
-        <Text className="degree">&deg;</Text>
+    <View style={styles.hourDisplay}>
+      <Text style={styles.hourDisplayHeader}>{hourConverted}{ampm}</Text>
+      <Text style={styles.hourDisplayHeader}>{weekDay}</Text>
+      <Image source={icon} style={styles.hourIcon} />
+      <Text style={styles.hourDescription}>{description}</Text>
+      <Text style={styles.hourTemp}>{Math.round(props.temp)}
+        <Text style={styles.degree}>&deg;</Text>
       </Text>
-      <Text className="hourly-feels-like">Feels Like {Math.round(props.feels_like)}
-        <Text className="degree">&deg;</Text>
+      <Text style={styles.hourSmallText}>Feels Like {Math.round(props.feels_like)}
+        <Text style={styles.degree}>&deg;</Text>
       </Text>
-      <Text className="hourly-rain-chance">Rain Chance: {Math.round(props.pop * 100)}%</Text>
-      <Text className="hourly-humidity">Humidity: {props.humidity}%</Text>
-      <Text className="hourly-wind-speed">Wind Spd: {Math.round(props.wind_speed)}mph</Text>
+      <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>
+      <Text style={styles.hourSmallText}>Humidity: {props.humidity}%</Text>
+      <Text style={styles.hourSmallText}>Wind Spd: {Math.round(props.wind_speed)}mph</Text>
     </View>
   );
 }

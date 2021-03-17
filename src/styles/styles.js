@@ -25,7 +25,8 @@ inputContainer: {
   width: "90%",
   maxWidth: 300,
   padding: 10,
-  marginVertical: 40
+  marginTop: 40,
+  marginBottom: 25
 },
 
 zipLabel: {
@@ -82,8 +83,7 @@ currentContainer: {
   borderRadius: 10,
   maxWidth: "90%",
   padding: 10,
-  marginVertical: 0,
-  marginHorizontal: 30
+  marginBottom: 25
 },
 
 currentIcon: {
@@ -94,10 +94,10 @@ currentIcon: {
 },
 
 currentDescription: {
-  fontSize: 20,
+  fontSize: 25,
   color: "white",
-  fontFamily: boldFont,
-  textTransform: "capitalize",
+  fontFamily: lightFont,
+  textTransform: "capitalize"
 },
 
 currentTemp: {
@@ -118,6 +118,79 @@ currentSmallText: {
   fontFamily: lightFont,
   lineHeight: 25
 },
+
+//HOURLY & DAILY
+
+sectionTitle: {
+  color: "white",
+  fontFamily: boldFont,
+  textAlign: "center",
+  fontSize: 30,
+  backgroundColor: backgroundColor,
+  borderColor: borderColor,
+  borderWidth: 2,
+  borderStyle: "solid",
+  borderRadius: 10,
+  height: 50,
+  width: 275,
+  lineHeight: 50,
+  marginLeft: 10,
+  marginBottom: 5
+},
+
+hourlyContainer: {
+  flexDirection: "row",
+  paddingHorizontal: 10,
+  paddingBottom: 5,
+  marginBottom: 25
+},
+
+hourDisplay: {
+  alignItems: "center",
+  backgroundColor: backgroundColor,
+  borderColor: borderColor,
+  borderWidth: 2,
+  borderStyle: "solid",
+  borderRadius: 10,
+  width: 115,
+  padding: 8,
+  marginRight: 5
+},
+
+hourDisplayHeader: {
+  color: "white",
+  fontFamily: boldFont,
+  fontSize: 17,
+  lineHeight: 22
+},
+
+hourIcon: {
+  resizeMode: "contain",
+  width: 90,
+  height: 90,  
+  marginVertical: 10
+},
+
+hourDescription: {
+  fontSize: 18,
+  color: "white",
+  fontFamily: lightFont,
+  textTransform: "capitalize",
+  textAlign: "center",
+},
+
+hourTemp: {
+  fontSize: 40,
+  color: "white",
+  fontFamily: boldFont,
+},
+
+hourSmallText: {
+  fontSize: 11,
+  color: "white",
+  fontFamily: lightFont,
+  lineHeight: 18
+}
 
 });
 

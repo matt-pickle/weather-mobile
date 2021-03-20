@@ -7,10 +7,9 @@ const lightFont ="Ubuntu_400Regular";
 
 const styles = StyleSheet.create({
 
-//GENERAL
-
-app: {
-  lineHeight: 1.6
+topBar: {
+  backgroundColor: "white",
+  height: 25
 },
 
 //INPUT

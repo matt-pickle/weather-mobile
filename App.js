@@ -107,7 +107,8 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <View style={styles.app}>
+      <View>
+        <View style={styles.topBar}></View>
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >

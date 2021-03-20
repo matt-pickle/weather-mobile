@@ -28,7 +28,7 @@ inputContainer: {
   marginBottom: 25
 },
 
-zipLabel: {
+inputLabel: {
   color: "white",
   fontFamily: boldFont,
   textAlign: "center",

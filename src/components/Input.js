@@ -17,7 +17,15 @@ function Input(props) {
 
   return (
     <View style={styles.inputContainer}>
-      <Text style={styles.zipLabel}>Enter your Zip code (USA only)</Text>
+      <Pressable style={isPressed ? styles.pressedButton : styles.button}
+                 onPressIn ={() => setIsPressed(true)}
+                 onPressOut={() => setIsPressed(false)}
+                 onPress={props.getLocation}
+      >
+        <Text style={styles.buttonText}>Use Current Location</Text>  
+      </Pressable>
+      <Text style={styles.inputLabel}>- OR -</Text>
+      <Text style={styles.inputLabel}>Enter your Zip code (USA only)</Text>
       <TextInput style={styles.zipInput}
                  type="text"
                  value={zip}

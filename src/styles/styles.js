@@ -7,6 +7,12 @@ const lightFont ="Ubuntu_400Regular";
 
 const styles = StyleSheet.create({
 
+//GENERAL
+
+app: {
+  paddingBottom: 40
+},
+
 topBar: {
   backgroundColor: "white",
   height: 25
@@ -24,7 +30,7 @@ inputContainer: {
   width: "90%",
   maxWidth: 300,
   padding: 10,
-  marginTop: 40,
+  marginTop: 20,
   marginBottom: 25
 },
 
@@ -36,6 +42,17 @@ inputLabel: {
   marginTop: 0,
   marginHorizontal: 0,
   marginBottom: 15
+},
+
+or: {
+  color: "white",
+  fontFamily: boldFont,
+  textAlign: "center",
+  fontSize: 18,
+  marginTop: 0,
+  marginHorizontal: 0,
+  marginBottom: 10,
+  marginTop: 15 
 },
 
 zipInput: {

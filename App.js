@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, View, ImageBackground, Alert} from 'react-native';
+import {ScrollView, View, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";
@@ -19,7 +19,6 @@ export default function App() {
     .then(res => {
       if (res.ok) {
         res.json().then(data => {
-          //Get weather data from coordinates
           getWeatherData(data.coord.lat, data.coord.lon);
         })  
       } else {
@@ -38,16 +37,16 @@ export default function App() {
 
   function getWeatherData(latitude, longitude) {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${REACT_APP_WEATHER_KEY}`)
-          .then(res => {
-            if (res.ok) {
-              res.json().then(data => {
-                setWeatherObj(data);
-                getCurrentWeather(data);
-              })
-            } else {
-              console.error("API Request Failed!");
-            }
-          })
+    .then(res => {
+      if (res.ok) {
+        res.json().then(data => {
+          setWeatherObj(data);
+          getCurrentWeather(data);
+        })
+      } else {
+        console.error("API Request Failed!");
+      }
+    })
   }
 
   function getCurrentWeather(data) {
@@ -119,7 +118,7 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <View>
+      <View style={styles.app}>
         <View style={styles.topBar}></View>
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}

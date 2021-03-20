@@ -1,4 +1,6 @@
 import React from 'react';
+import {Text, View, Image} from "react-native";
+import styles from '../styles/styles';
 
 function DayDisplay(props) {  
 
@@ -49,17 +51,18 @@ function DayDisplay(props) {
   : null;
 
   return (
-    <div className="day-display-container">
-      <h2 className="daily-day">{weekDay}</h2>
-      <h2 className="daily-date">{month}-{date}</h2>
-      <img src={icon} alt="weather icon" className="daily-icon" />
-      <p className="daily-description">{description}</p>
-      <p className="daily-temp">{Math.round(props.max)}<span className="degree">&deg;</span>
-        /{Math.round(props.min)}<span className="degree">&deg;</span></p>
-      <p className="daily-rain-chance">Rain Chance: {Math.round(props.pop * 100)}%</p>
-      <p className="daily-humidity">Humidity: {props.humidity}%</p>
-      <p className="daily-wind-speed">Wind Spd: {Math.round(props.wind_speed)}mph</p>
-    </div>
+    <View style={styles.hourDisplay}>
+      <Text style={styles.hourDisplayHeader}>{weekDay}</Text>
+      <Text style={styles.hourDisplayHeader}>{month}-{date}</Text>
+      <Image source={icon} style={styles.hourIcon} />
+      <Text style={styles.hourDescription}>{description}</Text>
+      <Text style={styles.dayTemp}>{Math.round(props.max)}<Text style={styles.degree}>&deg;</Text>
+        /{Math.round(props.min)}<Text style={styles.degree}>&deg;</Text>
+      </Text>
+      <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>
+      <Text style={styles.hourSmallText}>Humidity: {props.humidity}%</Text>
+      <Text style={styles.hourSmallText}>Wind Spd: {Math.round(props.wind_speed)}mph</Text>
+    </View>
   );
 }
 

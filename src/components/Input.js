@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Pressable} from "react-native";
-// import Button from "./Button";
 import styles from "../styles/styles.js";
 
 function Input(props) { 

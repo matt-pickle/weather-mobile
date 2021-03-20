@@ -185,6 +185,14 @@ hourTemp: {
   fontFamily: boldFont,
 },
 
+dayTemp: {
+  fontSize: 21,
+  color: "white",
+  fontFamily: boldFont,
+  height: 35,
+  lineHeight: 35
+},
+
 hourSmallText: {
   fontSize: 11,
   color: "white",

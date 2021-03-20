@@ -120,7 +120,7 @@ export default function App() {
                          currentWeather={currentWeather}
                 />
                 <Hourly weatherObj={weatherObj} />
-                {/* <Daily weatherObj={weatherObj} /> */}
+                <Daily weatherObj={weatherObj} />
               </View>
             : null
           }

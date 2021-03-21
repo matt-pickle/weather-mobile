@@ -121,14 +121,15 @@ export default function App() {
     return (
       <View style={styles.app}>
         <View style={styles.topBar}></View>
+        
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
+          <AdMobBanner bannerSize="fullBanner"
+                       adUnitID="ca-app-pub-3940256099942544/6300978111"
+                       servePersonalizedAds={true}
+          />
           <ScrollView>
-            <AdMobBanner bannerSize="fullBanner"
-                         adUnitID="ca-app-pub-3940256099942544/6300978111"
-                         servePersonalizedAds={true}
-            />
             <Input handleZipSubmit={handleZipSubmit}
                   getLocation={getLocation}
             />

@@ -12,7 +12,7 @@ import Daily from "./src/components/Daily";
 
 export default function App() {
   const [weatherObj, setWeatherObj] = useState();
-  let currentWeather = "partly-cloudy";
+  const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
 
   function handleZipSubmit(zip) {
     //Get latitude and longitude coordinates from zip code
@@ -63,12 +63,12 @@ export default function App() {
       conditionArr.push("Night");
     }
     //Set currentWeather based on current weather conditions
-    conditionArr.includes("Snow") ? currentWeather = "snow"
+    conditionArr.includes("Snow") ? setCurrentWeather("snow")
     : conditionArr.some(el => el === "Thunderstorm" ||
                               el === "Squall" ||
                               el === "Tornado") ?
-                              currentWeather = "thunderstorm"
-    : conditionArr.some(el => el === "Drizzle" || el === "Rain") ? currentWeather = "rain"
+                              setCurrentWeather("thunderstorm")
+    : conditionArr.some(el => el === "Drizzle" || el === "Rain") ? setCurrentWeather("rain")
     : conditionArr.some(el => el === 804 ||
                         el === "Fog" ||
                         el === "Smoke" ||
@@ -77,10 +77,10 @@ export default function App() {
                         el === "Dust" ||
                         el === "Sand" ||
                         el === "Ash") ?
-                        currentWeather = "cloudy"
-    : conditionArr.includes("Night") ? currentWeather = "night"
-    : conditionArr.some(el => el === 802 || el === 803) ? currentWeather = "partly-cloudy"
-    : conditionArr.some(el => el === "Clear" || el === 801) ? currentWeather = "sunny"
+                        setCurrentWeather("cloudy")
+    : conditionArr.includes("Night") ? setCurrentWeather("night")
+    : conditionArr.some(el => el === 802 || el === 803) ? setCurrentWeather("partly-cloudy")
+    : conditionArr.some(el => el === "Clear" || el === 801) ? setCurrentWeather("sunny")
     : null;
   }
 

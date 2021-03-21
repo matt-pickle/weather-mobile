@@ -39,7 +39,8 @@ function HourDisplay(props) {
   const timeOfDay = props.dt;
   if (timeOfDay < props.sunrise ||
       timeOfDay > props.sunset && timeOfDay < props.tomorrowSunrise ||
-      timeOfDay > props.tomorrowSunset && timeOfDay < props.dayAfterTomorrowSunrise) {
+      timeOfDay > props.tomorrowSunset && timeOfDay < props.dayAfterTomorrowSunrise ||
+      timeOfDay > props.dayAfterTomorrowSunset) {
     conditionArr.push("Night");
   }
 

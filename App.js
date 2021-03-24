@@ -3,6 +3,7 @@ import {ScrollView, View, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";
+import * as Location from "expo-location";
 import {AdMobBanner} from "expo-ads-admob";
 import styles from "./src/styles/styles.js";
 import Input from "./src/components/Input";
@@ -28,12 +29,9 @@ export default function App() {
     })
   }
 
-  function getLocation() {
-    navigator.geolocation.getCurrentPosition(
-      location => {
-        getWeatherData(location.coords.latitude, location.coords.longitude);
-      }
-    );
+  async function getLocation() {
+    let location = await Location.getCurrentPositionAsync({accuracy: 2});
+    getWeatherData(location.coords.latitude, location.coords.longitude);
   }
 
   function getWeatherData(latitude, longitude) {
@@ -125,10 +123,10 @@ export default function App() {
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          <AdMobBanner bannerSize="fullBanner"
+          {/* <AdMobBanner bannerSize="fullBanner"
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
-          />
+          /> */}
           <ScrollView>
             <Input handleZipSubmit={handleZipSubmit}
                   getLocation={getLocation}

@@ -126,7 +126,7 @@ export default function App() {
                          style={{width: "100%", height: "100%"}}
         >
           <AdMobBanner bannerSize="fullBanner"
-                       adUnitID="ca-app-pub-3940256099942544/6300978111"
+                       adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
           />
           <ScrollView>

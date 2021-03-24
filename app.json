@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "weather-mobile",
+    "name": "Simple Weather",
     "slug": "weather-mobile",
-    "version": "1.0.0",
+    "version": "1.4",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -19,7 +19,7 @@
     "ios": {
       "supportsTablet": true,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
+        "googleMobileAdsAppId": "ca-app-pub-5662395825140930~7013359044"
       }
     },
     "android": {
@@ -28,8 +28,11 @@
         "backgroundColor": "#FFFFFF"
       },
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
-      }
+        "googleMobileAdsAppId": "ca-app-pub-5662395825140930~7013359044"
+      },
+      "package": "weather.mobile",
+      "permissions": ["LOCATION"],
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/favicon.png"

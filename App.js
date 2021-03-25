@@ -30,8 +30,11 @@ export default function App() {
   }
 
   async function getLocation() {
-    let location = await Location.getCurrentPositionAsync({accuracy: 2});
-    getWeatherData(location.coords.latitude, location.coords.longitude);
+    let {granted} = await Location.requestPermissionsAsync()
+    if (granted) {
+      let location = await Location.getCurrentPositionAsync({accuracy: 2});
+      getWeatherData(location.coords.latitude, location.coords.longitude);
+    }
   }
 
   function getWeatherData(latitude, longitude) {
@@ -123,10 +126,10 @@ export default function App() {
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          {/* <AdMobBanner bannerSize="fullBanner"
+          <AdMobBanner bannerSize="fullBanner"
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
-          /> */}
+          />
           <ScrollView>
             <Input handleZipSubmit={handleZipSubmit}
                   getLocation={getLocation}

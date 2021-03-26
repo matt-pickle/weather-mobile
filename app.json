@@ -2,7 +2,7 @@
   "expo": {
     "name": "Simple Weather",
     "slug": "weather-mobile",
-    "version": "1.7",
+    "version": "1.8",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,14 +25,14 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#1277ff"
       },
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-5662395825140930~7013359044"
       },
       "package": "weather.mobile",
       "permissions": ["LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
-      "versionCode": 7
+      "versionCode": 8
     },
     "web": {
       "favicon": "./assets/favicon.png"

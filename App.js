@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Text, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
@@ -14,11 +14,16 @@ import Daily from "./src/components/Daily";
 export default function App() {
   const [weatherObj, setWeatherObj] = useState();
   const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+
+  let [fontsLoaded] = useFonts({
+    Ubuntu_400Regular,
+    Ubuntu_700Bold
+  });
 
   function handleZipSubmit(zip) {
     //Get latitude and longitude coordinates from zip code
-    setIsLoading(true);
+    setIsFetching(true);
     fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${REACT_APP_WEATHER_KEY}`)
     .then(res => {
       if (res.ok) {
@@ -32,7 +37,7 @@ export default function App() {
   }
 
   async function getLocation() {
-    setIsLoading(true);
+    setIsFetching(true);
     let {granted} = await Location.requestPermissionsAsync()
     if (granted) {
       let location = await Location.getCurrentPositionAsync({accuracy: 2});
@@ -47,10 +52,10 @@ export default function App() {
         res.json().then(data => {
           setWeatherObj(data);
           getCurrentWeather(data);
-          setIsLoading(false);
+          setIsFetching(false);
         })
       } else {
-        setIsLoading(false);
+        setIsFetching(false);
         console.error("API Request Failed!");
       }
     })
@@ -116,23 +121,18 @@ export default function App() {
       break;
   }
 
-  let [fontsLoaded] = useFonts({
-    Ubuntu_400Regular,
-    Ubuntu_700Bold
-  });
-
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     return (
       <View style={styles.app}>
         <View style={styles.topBar}></View>
-        
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          <AdMobBanner bannerSize="fullBanner"
-                       adUnitID="ca-app-pub-5662395825140930/1861653454"
+          <AdMobBanner bannerSize="banner"
+                       style={styles.adBanner}
+                       adUnitID="ca-app-pub-3940256099942544/6300978111"
                        servePersonalizedAds={true}
           />
           <ScrollView>
@@ -140,7 +140,7 @@ export default function App() {
                   getLocation={getLocation}
             />
             {
-              isLoading ?
+              isFetching ?
                 <View style={styles.loadingContainer}>
                   <Text style={styles.loadingText}>Loading...</Text>
                 </View>
@@ -157,6 +157,11 @@ export default function App() {
                 </View>
               : null
             }
+            <AdMobBanner bannerSize="mediumRectangle"
+                         style={styles.adBanner}
+                         adUnitID="ca-app-pub-3940256099942544/6300978111"
+                         servePersonalizedAds={true}
+            />
           </ScrollView>      
         </ImageBackground>
       </View>

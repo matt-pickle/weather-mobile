@@ -18,6 +18,10 @@ topBar: {
   height: 25
 },
 
+adBanner: {
+  alignSelf: "center"
+},
+
 loadingContainer: {
   alignSelf: "center",
   backgroundColor: backgroundColor,

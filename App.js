@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {ScrollView, View, Text, ImageBackground} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, View, Text, ImageBackground, StatusBar} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";
@@ -126,18 +126,18 @@ export default function App() {
   } else {
     return (
       <View style={styles.app}>
-        <View style={styles.topBar}></View>
+        <StatusBar></StatusBar>
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          <AdMobBanner bannerSize="banner"
+          {/* <AdMobBanner bannerSize="banner"
                        style={styles.adBanner}
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
-          />
+          /> */}
           <ScrollView>
             <Input handleZipSubmit={handleZipSubmit}
-                  getLocation={getLocation}
+                   getLocation={getLocation}
             />
             {
               isFetching ?
@@ -157,11 +157,11 @@ export default function App() {
                 </View>
               : null
             }
-            <AdMobBanner bannerSize="mediumRectangle"
+            {/* <AdMobBanner bannerSize="mediumRectangle"
                          style={styles.adBanner}
                          adUnitID="ca-app-pub-5662395825140930/7423867676"
                          servePersonalizedAds={true}
-            />
+            /> */}
           </ScrollView>      
         </ImageBackground>
       </View>

@@ -9,15 +9,6 @@ const styles = StyleSheet.create({
 
 //GENERAL
 
-app: {
-  paddingBottom: 40
-},
-
-topBar: {
-  backgroundColor: "white",
-  height: 25
-},
-
 adBanner: {
   alignSelf: "center"
 },

@@ -18,6 +18,26 @@ topBar: {
   height: 25
 },
 
+loadingContainer: {
+  alignSelf: "center",
+  backgroundColor: backgroundColor,
+  borderColor: borderColor,
+  borderWidth: 2,
+  borderStyle: "solid",
+  borderRadius: 10,
+  width: 190,
+  padding: 10,
+  marginTop: 30,
+  marginBottom: 500
+},
+
+loadingText: {
+  color: "white",
+  fontFamily: boldFont,
+  fontSize: 25,
+  textAlign: "center"
+},
+
 //INPUT
 
 inputContainer: {

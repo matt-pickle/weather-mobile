@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, View, ImageBackground} from 'react-native';
+import {ScrollView, View, Text, ImageBackground} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";
@@ -14,9 +14,11 @@ import Daily from "./src/components/Daily";
 export default function App() {
   const [weatherObj, setWeatherObj] = useState();
   const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleZipSubmit(zip) {
     //Get latitude and longitude coordinates from zip code
+    setIsLoading(true);
     fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${REACT_APP_WEATHER_KEY}`)
     .then(res => {
       if (res.ok) {
@@ -30,6 +32,7 @@ export default function App() {
   }
 
   async function getLocation() {
+    setIsLoading(true);
     let {granted} = await Location.requestPermissionsAsync()
     if (granted) {
       let location = await Location.getCurrentPositionAsync({accuracy: 2});
@@ -44,8 +47,10 @@ export default function App() {
         res.json().then(data => {
           setWeatherObj(data);
           getCurrentWeather(data);
+          setIsLoading(false);
         })
       } else {
+        setIsLoading(false);
         console.error("API Request Failed!");
       }
     })
@@ -134,6 +139,13 @@ export default function App() {
             <Input handleZipSubmit={handleZipSubmit}
                   getLocation={getLocation}
             />
+            {
+              isLoading ?
+                <View style={styles.loadingContainer}>
+                  <Text style={styles.loadingText}>Loading...</Text>
+                </View>
+              : null
+            }
             {
               weatherObj ?
                 <View>

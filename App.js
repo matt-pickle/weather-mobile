@@ -132,7 +132,7 @@ export default function App() {
         >
           <AdMobBanner bannerSize="banner"
                        style={styles.adBanner}
-                       adUnitID="ca-app-pub-3940256099942544/6300978111"
+                       adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
           />
           <ScrollView>
@@ -159,7 +159,7 @@ export default function App() {
             }
             <AdMobBanner bannerSize="mediumRectangle"
                          style={styles.adBanner}
-                         adUnitID="ca-app-pub-3940256099942544/6300978111"
+                         adUnitID="ca-app-pub-5662395825140930/7423867676"
                          servePersonalizedAds={true}
             />
           </ScrollView>      

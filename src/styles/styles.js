@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
 //GENERAL
 
 adBanner: {
-  alignSelf: "center"
+  alignSelf: "center",
+  marginBottom: 25
 },
 
 loadingContainer: {

@@ -4,15 +4,15 @@ import styles from "../styles/styles.js";
 import CustomButton from "./CustomButton";
 
 function Input(props) { 
-  const [zip, setZip] = useState("");
+  const [cityName, setCityName] = useState("");
 
   function handleChange(text) {
-    setZip(text);
+    setCityName(text);
   }
 
   function handleSubmit() {
-    props.handleZipSubmit(zip);
-    setZip("");
+    props.handleCitySubmit(cityName);
+    setCityName("");
   }
 
   return (
@@ -24,7 +24,7 @@ function Input(props) {
       <Text style={styles.inputLabel}>Enter your Zip code (USA only)</Text>
       <TextInput style={styles.zipInput}
                  type="text"
-                 value={zip}
+                 value={cityName}
                  onChangeText={handleChange}
       />
       <CustomButton onPress={handleSubmit}

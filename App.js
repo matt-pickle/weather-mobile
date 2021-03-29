@@ -119,7 +119,7 @@ export default function App() {
                          style={{width: "100%", height: "100%"}}
         >
           <AdMobBanner bannerSize="banner"
-                       style={styles.adBanner}
+                       style={styles.topBanner}
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
           />
@@ -136,7 +136,7 @@ export default function App() {
               : null
             }
             <AdMobBanner bannerSize="mediumRectangle"
-                         style={styles.adBanner}
+                         style={styles.bottomBanner}
                          adUnitID="ca-app-pub-5662395825140930/7423867676"
                          servePersonalizedAds={true}
             />

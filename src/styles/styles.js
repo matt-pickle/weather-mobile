@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
 
 //GENERAL
 
-adBanner: {
+topBanner: {
+  alignSelf: "center",
+},
+
+bottomBanner: {
   alignSelf: "center",
   marginBottom: 25
 },

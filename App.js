@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, View, Text, ImageBackground, StatusBar} from 'react-native';
+import {ScrollView, View, ImageBackground, StatusBar} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
 import {REACT_APP_WEATHER_KEY} from "@env";

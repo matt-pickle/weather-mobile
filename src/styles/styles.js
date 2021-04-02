@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const backgroundColor = "rgba(0,0,0,0.5)";
 const borderColor = "rgba(0,0,0,0.6)";
@@ -7,7 +7,7 @@ const lightFont ="Ubuntu_400Regular";
 
 const styles = StyleSheet.create({
 
-//GENERAL
+//ADS
 
 topBanner: {
   alignSelf: "center",
@@ -16,95 +16,6 @@ topBanner: {
 bottomBanner: {
   alignSelf: "center",
   marginBottom: 25
-},
-
-loadingContainer: {
-  alignSelf: "center",
-  backgroundColor: backgroundColor,
-  borderColor: borderColor,
-  borderWidth: 2,
-  borderStyle: "solid",
-  borderRadius: 10,
-  width: 190,
-  padding: 10,
-  marginTop: 30,
-  marginBottom: 500
-},
-
-loadingText: {
-  color: "white",
-  fontFamily: boldFont,
-  fontSize: 25,
-  textAlign: "center"
-},
-
-//INPUT
-
-inputContainer: {
-  alignSelf: "center",
-  backgroundColor: backgroundColor,
-  borderColor: borderColor,
-  borderWidth: 2,
-  borderStyle: "solid",
-  borderRadius: 10,
-  width: "90%",
-  maxWidth: 300,
-  padding: 10,
-  marginTop: 20,
-  marginBottom: 25
-},
-
-inputLabel: {
-  color: "white",
-  fontFamily: boldFont,
-  textAlign: "center",
-  fontSize: 18,
-  marginTop: 0,
-  marginHorizontal: 0,
-  marginBottom: 15
-},
-
-or: {
-  color: "white",
-  fontFamily: boldFont,
-  textAlign: "center",
-  fontSize: 18,
-  marginTop: 0,
-  marginHorizontal: 0,
-  marginBottom: 10,
-  marginTop: 15 
-},
-
-zipInput: {
-  backgroundColor: "white",
-  fontSize: 18,
-  textAlign: "center",
-  height: 40,
-  borderRadius: 5,
-  marginTop: 0,
-  marginHorizontal: 0,
-  marginBottom: 15
-},
-
-button: {
-  backgroundColor: "white",
-  height: 40,
-  borderRadius: 5,
-  justifyContent: "center"
-},
-
-pressedButton: {
-  backgroundColor: borderColor,
-  height: 40,
-  borderRadius: 5,
-  justifyContent: "center"
-},
-
-buttonText: {
-  color: "black",
-  fontFamily: "Ubuntu_700Bold",
-  fontSize: 18,
-  textAlign: "center"
 },
 
 //CURRENT
@@ -119,7 +30,7 @@ currentContainer: {
   borderRadius: 10,
   maxWidth: "90%",
   padding: 10,
-  marginBottom: 25
+  marginVertical: 25
 },
 
 currentIcon: {

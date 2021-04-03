@@ -2,7 +2,7 @@
   "expo": {
     "name": "Simple Weather",
     "slug": "weather-mobile",
-    "version": "2.2",
+    "version": "2.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -32,7 +32,7 @@
       },
       "package": "weather.mobile",
       "permissions": ["LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
-      "versionCode": 14
+      "versionCode": 15
     },
     "web": {
       "favicon": "./assets/favicon.png"

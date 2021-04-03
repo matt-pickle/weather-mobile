@@ -15,22 +15,51 @@ topBanner: {
 
 bottomBanner: {
   alignSelf: "center",
-  marginBottom: 25
+  marginVertical: 25
 },
 
 //CURRENT
 
-currentContainer: {
-  alignSelf: "center",
-  alignItems: "center",
+sectionTitle: {
+  color: "white",
+  fontFamily: boldFont,
+  textAlign: "center",
+  fontSize: 30,
   backgroundColor: backgroundColor,
   borderColor: borderColor,
   borderWidth: 2,
   borderStyle: "solid",
   borderRadius: 10,
-  maxWidth: "90%",
-  padding: 10,
-  marginVertical: 25
+  height: 50,
+  width: 275,
+  lineHeight: 50,
+  marginTop: 25,
+  marginLeft: 10
+},
+
+currentContainer: {
+  alignSelf: "flex-start",
+  flexDirection: "row",
+  backgroundColor: backgroundColor,
+  borderColor: borderColor,
+  borderWidth: 2,
+  borderStyle: "solid",
+  borderRadius: 10,
+  padding: 5,
+  marginVertical: 5,
+  marginLeft: 10
+},
+
+currentColumnLeft: {
+  alignSelf: "flex-start",
+  alignItems: "center",
+  margin: 5
+},
+
+currentColumnRight: {
+  alignSelf: "flex-start",
+  alignItems: "flex-start",
+  margin: 5
 },
 
 currentIcon: {
@@ -51,8 +80,16 @@ currentTemp: {
   fontSize: 90,
   color: "white",
   fontFamily: boldFont,
-  lineHeight: 100,
-  height: 95
+  lineHeight: 90,
+  height: 75,
+},
+
+currentTempTripleDigits: {
+  fontSize: 60,
+  color: "white",
+  fontFamily: boldFont,
+  lineHeight: 60,
+  height: 55,
 },
 
 degree: {
@@ -68,28 +105,11 @@ currentSmallText: {
 
 //HOURLY & DAILY
 
-sectionTitle: {
-  color: "white",
-  fontFamily: boldFont,
-  textAlign: "center",
-  fontSize: 30,
-  backgroundColor: backgroundColor,
-  borderColor: borderColor,
-  borderWidth: 2,
-  borderStyle: "solid",
-  borderRadius: 10,
-  height: 50,
-  width: 275,
-  lineHeight: 50,
-  marginLeft: 10,
-  marginBottom: 5
-},
-
 hourlyContainer: {
   flexDirection: "row",
-  paddingHorizontal: 10,
   paddingBottom: 5,
-  marginBottom: 25
+  paddingLeft: 10,
+  marginTop: 5,
 },
 
 hourDisplay: {

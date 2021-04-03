@@ -14,6 +14,7 @@ export default function App() {
   const [weatherObj, setWeatherObj] = useState();
   const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
   const [isFetching, setIsFetching] = useState(false);
+  const [city, setCity] = useState("");
 
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular,
@@ -21,7 +22,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    getLocation();
+    getLocation()
   }, []);
 
   async function getLocation() {
@@ -29,12 +30,20 @@ export default function App() {
     let {granted} = await Location.requestPermissionsAsync()
     if (granted) {
       let location = await Location.getCurrentPositionAsync({accuracy: 2});
-      fetchWeatherData(location.coords.latitude, location.coords.longitude);
+      let region = await Location.reverseGeocodeAsync({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
+      });
+      setCity(region[0].city);
+      let units = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
+        "imperial" :
+        "metric";
+      fetchWeatherData(location.coords.latitude, location.coords.longitude, units);
     }
   }
 
-  function fetchWeatherData(latitude, longitude) {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${REACT_APP_WEATHER_KEY}`)
+  function fetchWeatherData(latitude, longitude, units) {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${REACT_APP_WEATHER_KEY}`)
     .then(res => {
       if (res.ok) {
         res.json().then(data => {
@@ -127,7 +136,7 @@ export default function App() {
             {
               weatherObj ?
                 <View>
-                  <Text style={styles.sectionTitle}>Current Weather</Text>
+                  <Text style={styles.sectionTitle}>Current Weather in:{"\n"}{city}</Text>
                   <Current weatherObj={weatherObj}
                            currentWeather={currentWeather}
                   />

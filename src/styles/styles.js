@@ -21,18 +21,19 @@ bottomBanner: {
 //CURRENT
 
 sectionTitle: {
+  alignSelf: "flex-start",
+  flexWrap: "wrap",
   color: "white",
   fontFamily: boldFont,
-  textAlign: "center",
-  fontSize: 30,
+  fontSize: 25,
   backgroundColor: backgroundColor,
   borderColor: borderColor,
   borderWidth: 2,
   borderStyle: "solid",
   borderRadius: 10,
-  height: 50,
-  width: 275,
-  lineHeight: 50,
+  // lineHeight: 40,
+  paddingVertical: 5,
+  paddingHorizontal: 15,
   marginTop: 25,
   marginLeft: 10
 },

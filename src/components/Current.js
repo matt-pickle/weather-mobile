@@ -75,7 +75,6 @@ function Current(props) {
             /{Math.round(props.weatherObj.daily[0].temp.min)}<Text style={styles.degree}>&deg;</Text>
           </Text>
         </Text>
-        
         <Text style={styles.currentSmallText}>Humidity: {current.humidity}%</Text>
         <Text style={styles.currentSmallText}>Wind Spd: {Math.round(current.wind_speed)}mph</Text>
         <Text style={styles.currentSmallText}>Sunrise: {sunriseHour}:{sunriseMinutes}am</Text>

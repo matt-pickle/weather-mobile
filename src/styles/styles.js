@@ -31,7 +31,6 @@ sectionTitle: {
   borderWidth: 2,
   borderStyle: "solid",
   borderRadius: 10,
-  // lineHeight: 40,
   paddingVertical: 5,
   paddingHorizontal: 15,
   marginTop: 25,
@@ -54,13 +53,15 @@ currentContainer: {
 currentColumnLeft: {
   alignSelf: "flex-start",
   alignItems: "center",
+  width: 150,
   margin: 5
 },
 
 currentColumnRight: {
   alignSelf: "flex-start",
   alignItems: "flex-start",
-  margin: 5
+  margin: 5,
+  marginLeft: 10
 },
 
 currentIcon: {
@@ -71,6 +72,7 @@ currentIcon: {
 },
 
 currentDescription: {
+  textAlign: "center",
   fontSize: 25,
   color: "white",
   fontFamily: lightFont,

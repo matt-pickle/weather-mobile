@@ -42,7 +42,7 @@ function Current(props) {
   }
 
   //Check for triple digit temp
-  const tempStyle = current.temp.length > 2 ?
+  const tempStyle = current.temp.length > 2 || current.temp < 0 ?
     styles.currentTempTripleDigits :
     styles.currentTemp;
 
@@ -51,12 +51,23 @@ function Current(props) {
     (props.weatherObj.current.sunrise * 1000) + props.weatherObj.timezone_offset
   );
   const sunriseHour = sunrise.getHours();
-  const sunriseMinutes = sunrise.getMinutes();
+  let sunriseMinutes = sunrise.getMinutes();
+  if (sunriseMinutes < 10) {
+    sunriseMinutes = "0" + sunriseMinutes;
+  }
   const sunset = new Date(
     (current.sunset * 1000) + props.weatherObj.timezone_offset
   );
-  const sunsetHour = sunset.getHours() -12;
-  const sunsetMinutes = sunset.getMinutes();
+  let sunsetHour = sunset.getHours();
+  if (sunsetHour > 12) {
+    sunsetHour = sunsetHour -12;
+  } else if (sunsetHour === 0) {
+    sunsetHour = 12;
+  }
+  let sunsetMinutes = sunset.getMinutes();
+  if (sunsetMinutes < 10) {
+    sunsetMinutes = "0" + sunsetMinutes;
+  }
   
   return (
     <View style={styles.currentContainer}>

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Text, ImageBackground, StatusBar} from 'react-native';
 import AppLoading from "expo-app-loading";
 import {useFonts, Ubuntu_700Bold, Ubuntu_400Regular} from "@expo-google-fonts/ubuntu";
-import {REACT_APP_WEATHER_KEY} from "@env";
 import * as Location from "expo-location";
 import {AdMobBanner} from "expo-ads-admob";
 import styles from "./src/styles/styles.js";
@@ -35,20 +34,36 @@ export default function App() {
         longitude: location.coords.longitude
       });
       setCity(region[0].city);
-      let units = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
+      const cityName= region[0].city;
+      const units = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
         "imperial" :
         "metric";
-      fetchWeatherData(location.coords.latitude, location.coords.longitude, units);
+      fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude, units);
     }
   }
 
-  function fetchWeatherData(latitude, longitude, units) {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${REACT_APP_WEATHER_KEY}`)
-    .then(res => {
-      if (res.ok) {
-        res.json().then(data => {
-          setWeatherObj(data);
-          getCurrentWeather(data);
+  function fetchWeatherData(cityName, latitude, longitude, units) {
+    let now = Date.now();
+    let body = {
+      data: {
+        cityCode: cityName + Math.round(latitude) + Math.round(longitude),
+        cityName: cityName,
+        latitude: latitude,
+        longitude: longitude,
+        units: units,
+        timestamp: now
+      }
+    };
+    fetch("http://10.0.2.2:5001/simple-weather-d2938/us-central1/requestData", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body)
+    })
+    .then(response => {
+      if (response.ok) {
+        response.json().then(data => {
+          setWeatherObj(data.weatherObj);
+          getCurrentWeather(data.weatherObj);
           setIsFetching(false);
         })
       } else {
@@ -127,11 +142,11 @@ export default function App() {
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          <AdMobBanner bannerSize="banner"
+          {/* <AdMobBanner bannerSize="banner"
                        style={styles.topBanner}
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
-          />
+          /> */}
           <ScrollView>
             {
               weatherObj ?
@@ -145,11 +160,11 @@ export default function App() {
                 </View>
               : null
             }
-            <AdMobBanner bannerSize="mediumRectangle"
+            {/* <AdMobBanner bannerSize="mediumRectangle"
                          style={styles.bottomBanner}
                          adUnitID="ca-app-pub-5662395825140930/7423867676"
                          servePersonalizedAds={true}
-            />
+            /> */}
           </ScrollView>      
         </ImageBackground>
       </View>

@@ -47,17 +47,13 @@ function Current(props) {
     styles.currentTemp;
 
   //Set sunrise and sunset times
-  const sunrise = new Date(
-    (props.weatherObj.current.sunrise * 1000) + props.weatherObj.timezone_offset
-  );
+  const sunrise = new Date(current.sunrise * 1000);
   const sunriseHour = sunrise.getHours();
   let sunriseMinutes = sunrise.getMinutes();
   if (sunriseMinutes < 10) {
     sunriseMinutes = "0" + sunriseMinutes;
   }
-  const sunset = new Date(
-    (current.sunset * 1000) + props.weatherObj.timezone_offset
-  );
+  const sunset = new Date(current.sunset * 1000);
   let sunsetHour = sunset.getHours();
   if (sunsetHour > 12) {
     sunsetHour = sunsetHour -12;

@@ -34,7 +34,7 @@ export default function App() {
         longitude: location.coords.longitude
       });
       setCity(region[0].city);
-      const cityName= region[0].city;
+      const cityName= region[0].city || "Unknown";
       const units = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
         "imperial" :
         "metric";
@@ -46,7 +46,7 @@ export default function App() {
     let now = Date.now();
     let body = {
       data: {
-        cityCode: cityName + Math.round(latitude) + Math.round(longitude),
+        cityCode: cityName + " " + Math.round(latitude) + "," + Math.round(longitude),
         cityName: cityName,
         latitude: latitude,
         longitude: longitude,

@@ -45,14 +45,12 @@ export default function App() {
   function fetchWeatherData(cityName, latitude, longitude, units) {
     let now = Date.now();
     let body = {
-      data: {
-        cityCode: cityName + " " + Math.round(latitude) + "," + Math.round(longitude),
-        cityName: cityName,
-        latitude: latitude,
-        longitude: longitude,
-        units: units,
-        timestamp: now
-      }
+      cityCode: cityName + " " + Math.round(latitude) + "," + Math.round(longitude),
+      cityName: cityName,
+      latitude: latitude,
+      longitude: longitude,
+      units: units,
+      timestamp: now
     };
     fetch("http://10.0.2.2:5001/simple-weather-d2938/us-central1/requestData", {
       method: "POST",

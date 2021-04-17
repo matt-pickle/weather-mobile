@@ -35,27 +35,26 @@ export default function App() {
         longitude: location.coords.longitude
       });
       setCity(region[0].city);
-      const cityName= region[0].city || "Unknown";
-      setUnits(
-        region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
-          "imperial" :
-          "metric"
-      );
-      fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude, units);
+      const cityName = region[0].city || "Unknown";
+      const unitType = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
+        "imperial" :
+        "metric";
+      setUnits(unitType);
+      fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude, unitType);
     }
   }
 
-  function fetchWeatherData(cityName, latitude, longitude, units) {
+  function fetchWeatherData(cityName, latitude, longitude, unitType) {
     let now = Date.now();
     let body = {
       cityCode: cityName + " " + Math.round(latitude) + "," + Math.round(longitude),
       cityName: cityName,
       latitude: latitude,
       longitude: longitude,
-      units: units,
+      units: unitType,
       timestamp: now
     };
-    fetch("http://10.0.2.2:5001/simple-weather-d2938/us-central1/requestData", {
+    fetch("https://us-central1-simple-weather-d2938.cloudfunctions.net/requestData", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(body)

@@ -14,6 +14,7 @@ export default function App() {
   const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
   const [isFetching, setIsFetching] = useState(false);
   const [city, setCity] = useState("");
+  const [units, setUnits] = useState("metric");
 
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular,
@@ -35,9 +36,11 @@ export default function App() {
       });
       setCity(region[0].city);
       const cityName= region[0].city || "Unknown";
-      const units = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
-        "imperial" :
-        "metric";
+      setUnits(
+        region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
+          "imperial" :
+          "metric"
+      );
       fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude, units);
     }
   }
@@ -152,9 +155,14 @@ export default function App() {
                   <Text style={styles.sectionTitle}>Current Weather in:{"\n"}{city}</Text>
                   <Current weatherObj={weatherObj}
                            currentWeather={currentWeather}
+                           units={units}
                   />
-                  <Hourly weatherObj={weatherObj} />
-                  <Daily weatherObj={weatherObj} />
+                  <Hourly weatherObj={weatherObj}
+                          units={units}
+                  />
+                  <Daily weatherObj={weatherObj}
+                         units={units}
+                  />
                 </View>
               : null
             }

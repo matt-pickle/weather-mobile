@@ -14,6 +14,7 @@ function Hourly(props) {
                         pop={hour.pop}
                         humidity={hour.humidity}
                         wind_speed={hour.wind_speed}
+                        units={props.units}
                         sunrise={props.weatherObj.current.sunrise}
                         sunset={props.weatherObj.current.sunset}
                         tomorrowSunrise={props.weatherObj.daily[1].sunrise}

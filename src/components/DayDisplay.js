@@ -61,7 +61,9 @@ function DayDisplay(props) {
       </Text>
       <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>
       <Text style={styles.hourSmallText}>Humidity: {props.humidity}%</Text>
-      <Text style={styles.hourSmallText}>Wind Spd: {Math.round(props.wind_speed)}mph</Text>
+      <Text style={styles.hourSmallText}>
+        Wind Spd: {Math.round(props.wind_speed)}{props.units === "imperial" ? "mph" : "kph"}
+      </Text>
     </View>
   );
 }

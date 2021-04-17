@@ -83,7 +83,9 @@ function Current(props) {
           </Text>
         </Text>
         <Text style={styles.currentSmallText}>Humidity: {current.humidity}%</Text>
-        <Text style={styles.currentSmallText}>Wind Spd: {Math.round(current.wind_speed)}mph</Text>
+        <Text style={styles.currentSmallText}>
+          Wind Spd: {Math.round(current.wind_speed)}{props.units === "imperial" ? "mph" : "kph"}
+        </Text>
         <Text style={styles.currentSmallText}>Sunrise: {sunriseHour}:{sunriseMinutes}am</Text>
         <Text style={styles.currentSmallText}>Sunset: {sunsetHour}:{sunsetMinutes}pm</Text>
       </View>      

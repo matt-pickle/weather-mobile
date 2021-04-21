@@ -7,6 +7,7 @@ function Current(props) {
 
   //Convert units if needed
   const currentTemp = props.convertTempUnits(current.temp);
+  const feelsLike = props.convertTempUnits(current.feels_like);
   const maxTemp = props.convertTempUnits(props.weatherObj.daily[0].temp.max);
   const minTemp = props.convertTempUnits(props.weatherObj.daily[0].temp.min);
   const windSpeed = props.convertSpeedUnits(current.wind_speed);
@@ -81,7 +82,7 @@ function Current(props) {
         <Text style={tempStyle}>{Math.round(currentTemp)}
             <Text style={styles.degree}>&deg;</Text>
         </Text>
-        <Text style={styles.currentSmallText}>Feels Like {Math.round(current.feels_like)}&deg;</Text>
+        <Text style={styles.currentSmallText}>Feels Like {feelsLike}&deg;</Text>
         <Text style={styles.currentSmallText}>
           <Text style={styles.currentSmallText}>H/L: </Text>
           <Text style={styles.dayTemp}>{maxTemp}<Text style={styles.degree}>&deg;</Text>

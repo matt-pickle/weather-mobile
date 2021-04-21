@@ -14,7 +14,6 @@ function Daily(props) {
                        max={maxTemp}
                        min={minTemp}
                        weather={day.weather}
-                       feels_like={day.feels_like}
                        pop={day.pop}
                        humidity={day.humidity}
                        windSpeed={windSpeed}

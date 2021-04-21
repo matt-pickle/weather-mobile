@@ -72,7 +72,7 @@ function HourDisplay(props) {
       <Text style={styles.hourTemp}>{props.temp}
         <Text style={styles.degree}>&deg;</Text>
       </Text>
-      <Text style={styles.hourSmallText}>Feels Like {Math.round(props.feels_like)}
+      <Text style={styles.hourSmallText}>Feels Like {props.feelsLike}
         <Text style={styles.degree}>&deg;</Text>
       </Text>
       <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>

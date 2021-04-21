@@ -48,7 +48,6 @@ export default function App() {
         "mph" :
         "kph"
       );
-      console.log(region[0].country);
       fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude);
     }
   }
@@ -166,16 +165,15 @@ export default function App() {
         <ImageBackground source={backgroundImage}
                          style={{width: "100%", height: "100%"}}
         >
-          {/* <AdMobBanner bannerSize="banner"
+          <AdMobBanner bannerSize="banner"
                        style={styles.topBanner}
                        adUnitID="ca-app-pub-5662395825140930/1861653454"
                        servePersonalizedAds={true}
-          /> */}
+          />
           <ScrollView>
             {
               weatherObj ?
                 <View>
-                  {console.log(speedUnits)}
                   <Text style={styles.sectionTitle}>Current Weather in:{"\n"}{city}</Text>
                   <Current weatherObj={weatherObj}
                            currentWeather={currentWeather}
@@ -193,11 +191,11 @@ export default function App() {
                 </View>
               : null
             }
-            {/* <AdMobBanner bannerSize="mediumRectangle"
+            <AdMobBanner bannerSize="mediumRectangle"
                          style={styles.bottomBanner}
                          adUnitID="ca-app-pub-5662395825140930/7423867676"
                          servePersonalizedAds={true}
-            /> */}
+            />
           </ScrollView>      
         </ImageBackground>
       </View>

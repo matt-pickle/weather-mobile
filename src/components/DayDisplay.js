@@ -56,14 +56,12 @@ function DayDisplay(props) {
       <Text style={styles.hourDisplayHeader}>{month}-{date}</Text>
       <Image source={icon} style={styles.hourIcon} />
       <Text style={styles.hourDescription}>{description}</Text>
-      <Text style={styles.dayTemp}>{Math.round(props.max)}<Text style={styles.degree}>&deg;</Text>
-        /{Math.round(props.min)}<Text style={styles.degree}>&deg;</Text>
+      <Text style={styles.dayTemp}>{props.max}<Text style={styles.degree}>&deg;</Text>
+        /{props.min}<Text style={styles.degree}>&deg;</Text>
       </Text>
       <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>
       <Text style={styles.hourSmallText}>Humidity: {props.humidity}%</Text>
-      <Text style={styles.hourSmallText}>
-        Wind Spd: {Math.round(props.wind_speed)}{props.units === "imperial" ? "mph" : "kph"}
-      </Text>
+      <Text style={styles.hourSmallText}>Wind Spd: {props.windSpeed}</Text>
     </View>
   );
 }

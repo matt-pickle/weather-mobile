@@ -7,14 +7,15 @@ function Hourly(props) {
   const hourly = props.weatherObj.hourly;
 
   const hourDisplays = hourly.map(hour => {
+    const temp = props.convertTempUnits(hour.temp);
+    const windSpeed = props.convertSpeedUnits(hour.wind_speed);
     return <HourDisplay dt={hour.dt}
-                        temp={hour.temp}
+                        temp={temp}
                         weather={hour.weather}
                         feels_like={hour.feels_like}
                         pop={hour.pop}
                         humidity={hour.humidity}
-                        wind_speed={hour.wind_speed}
-                        units={props.units}
+                        windSpeed={windSpeed}
                         sunrise={props.weatherObj.current.sunrise}
                         sunset={props.weatherObj.current.sunset}
                         tomorrowSunrise={props.weatherObj.daily[1].sunrise}

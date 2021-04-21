@@ -7,15 +7,17 @@ function Daily(props) {
   const daily = props.weatherObj.daily;
 
   const dayDisplays = daily.map(day => {
+    const maxTemp = props.convertTempUnits(day.temp.max);
+    const minTemp = props.convertTempUnits(day.temp.min);
+    const windSpeed = props.convertSpeedUnits(day.wind_speed);
     return <DayDisplay dt={day.dt}
-                       max={day.temp.max}
-                       min={day.temp.min}
+                       max={maxTemp}
+                       min={minTemp}
                        weather={day.weather}
                        feels_like={day.feels_like}
                        pop={day.pop}
                        humidity={day.humidity}
-                       wind_speed={day.wind_speed}
-                       units={props.units}
+                       windSpeed={windSpeed}
                        key={day.dt}
            />
   });

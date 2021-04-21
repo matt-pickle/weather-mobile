@@ -14,7 +14,8 @@ export default function App() {
   const [currentWeather, setCurrentWeather] = useState("partly-cloudy");
   const [isFetching, setIsFetching] = useState(false);
   const [city, setCity] = useState("");
-  const [units, setUnits] = useState("metric");
+  const [tempUnits, setTempUnits] = useState("celsius");
+  const [speedUnits, setSpeedUnits] = useState("kph");
 
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular,
@@ -36,22 +37,27 @@ export default function App() {
       });
       setCity(region[0].city);
       const cityName = region[0].city || "Unknown";
-      const unitType = region[0].country == ("United States" || "Belize" || "Palau" || "the Bahamas" || "Cayman Islands") ?
-        "imperial" :
-        "metric";
-      setUnits(unitType);
-      fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude, unitType);
+      setTempUnits(
+        region[0].country == "United States" ?
+        "fahrenheit" :
+        "celsius"
+      );
+      setSpeedUnits(
+        region[0].country == ("United States" || "United Kingdom") ?
+        "mph" :
+        "kph"
+      )
+      fetchWeatherData(cityName, location.coords.latitude, location.coords.longitude);
     }
   }
 
-  function fetchWeatherData(cityName, latitude, longitude, unitType) {
+  function fetchWeatherData(cityName, latitude, longitude) {
     let now = Date.now();
     let body = {
       cityCode: cityName + " " + Math.round(latitude) + "," + Math.round(longitude),
       cityName: cityName,
       latitude: latitude,
       longitude: longitude,
-      units: unitType,
       timestamp: now
     };
     fetch("https://us-central1-simple-weather-d2938.cloudfunctions.net/requestData", {
@@ -71,6 +77,22 @@ export default function App() {
         console.error("API Request Failed!");
       }
     })
+  }
+
+  function convertTempUnits(temp) {
+    return (
+      tempUnits === "celsius" ?
+        Math.round(temp) :
+        Math.round((temp * 1.8) + 32)
+    );
+  }
+
+  function convertSpeedUnits(speed) {
+    return (
+      speedUnits === "kph" ?
+        Math.round(speed) + "kph" :
+        Math.round(speed * 1.609344) + "mph"
+    );
   }
 
   function getCurrentWeather(data) {
@@ -154,13 +176,16 @@ export default function App() {
                   <Text style={styles.sectionTitle}>Current Weather in:{"\n"}{city}</Text>
                   <Current weatherObj={weatherObj}
                            currentWeather={currentWeather}
-                           units={units}
+                           convertTempUnits={convertTempUnits}
+                           convertSpeedUnits={convertSpeedUnits}
                   />
                   <Hourly weatherObj={weatherObj}
-                          units={units}
+                          convertTempUnits={convertTempUnits}
+                          convertSpeedUnits={convertSpeedUnits}
                   />
                   <Daily weatherObj={weatherObj}
-                         units={units}
+                         convertTempUnits={convertTempUnits}
+                         convertSpeedUnits={convertSpeedUnits}
                   />
                 </View>
               : null

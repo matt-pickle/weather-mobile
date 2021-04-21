@@ -4,6 +4,12 @@ import styles from '../styles/styles';
 
 function Current(props) { 
   const current = props.weatherObj.current;
+
+  //Convert units if needed
+  const currentTemp = props.convertTempUnits(current.temp);
+  const maxTemp = props.convertTempUnits(props.weatherObj.daily[0].temp.max);
+  const minTemp = props.convertTempUnits(props.weatherObj.daily[0].temp.min);
+  const windSpeed = props.convertSpeedUnits(current.wind_speed);
   
   //Creates weather description string
   let description = "";
@@ -72,20 +78,18 @@ function Current(props) {
         <Text style={styles.currentDescription}>{description}</Text>
       </View>
       <View style={styles.currentColumnRight}>
-        <Text style={tempStyle}>{Math.round(current.temp)}
+        <Text style={tempStyle}>{Math.round(currentTemp)}
             <Text style={styles.degree}>&deg;</Text>
         </Text>
         <Text style={styles.currentSmallText}>Feels Like {Math.round(current.feels_like)}&deg;</Text>
         <Text style={styles.currentSmallText}>
           <Text style={styles.currentSmallText}>H/L: </Text>
-          <Text style={styles.dayTemp}>{Math.round(props.weatherObj.daily[0].temp.max)}<Text style={styles.degree}>&deg;</Text>
-            /{Math.round(props.weatherObj.daily[0].temp.min)}<Text style={styles.degree}>&deg;</Text>
+          <Text style={styles.dayTemp}>{maxTemp}<Text style={styles.degree}>&deg;</Text>
+            /{minTemp}<Text style={styles.degree}>&deg;</Text>
           </Text>
         </Text>
         <Text style={styles.currentSmallText}>Humidity: {current.humidity}%</Text>
-        <Text style={styles.currentSmallText}>
-          Wind Spd: {Math.round(current.wind_speed)}{props.units === "imperial" ? "mph" : "kph"}
-        </Text>
+        <Text style={styles.currentSmallText}>Wind Spd: {windSpeed}</Text>
         <Text style={styles.currentSmallText}>Sunrise: {sunriseHour}:{sunriseMinutes}am</Text>
         <Text style={styles.currentSmallText}>Sunset: {sunsetHour}:{sunsetMinutes}pm</Text>
       </View>      

@@ -69,7 +69,7 @@ function HourDisplay(props) {
       <Text style={styles.hourDisplayHeader}>{weekDay}</Text>
       <Image source={icon} style={styles.hourIcon} />
       <Text style={styles.hourDescription}>{description}</Text>
-      <Text style={styles.hourTemp}>{Math.round(props.temp)}
+      <Text style={styles.hourTemp}>{props.temp}
         <Text style={styles.degree}>&deg;</Text>
       </Text>
       <Text style={styles.hourSmallText}>Feels Like {Math.round(props.feels_like)}
@@ -77,9 +77,7 @@ function HourDisplay(props) {
       </Text>
       <Text style={styles.hourSmallText}>Rain Chance: {Math.round(props.pop * 100)}%</Text>
       <Text style={styles.hourSmallText}>Humidity: {props.humidity}%</Text>
-      <Text style={styles.hourSmallText}>
-        Wind Spd: {Math.round(props.wind_speed)}{props.units === "imperial" ? "mph" : "kph"}
-      </Text>
+      <Text style={styles.hourSmallText}>Wind Spd: {props.windSpeed}</Text>
     </View>
   );
 }

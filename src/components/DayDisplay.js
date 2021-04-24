@@ -13,7 +13,19 @@ function DayDisplay(props) {
                 : day === 4 ? "Thursday"
                 : day === 5 ? "Friday"
                 : "Saturday";
-  const month = now.getMonth() + 1;
+  const monthNum = now.getMonth();
+  const month = monthNum === 0 ? "Jan"
+              : monthNum === 1 ? "Feb"
+              : monthNum === 2 ? "Mar"
+              : monthNum === 3 ? "Apr"
+              : monthNum === 4 ? "May"
+              : monthNum === 5 ? "Jun"
+              : monthNum === 6 ? "Jul"
+              : monthNum === 7 ? "Aug"
+              : monthNum === 8 ? "Sep"
+              : monthNum === 9 ? "Oct"
+              : monthNum === 10 ? "Nov"
+              : "Dec"
   const date = now.getDate();
   
   //Creates weather description string
@@ -53,7 +65,7 @@ function DayDisplay(props) {
   return (
     <View style={styles.hourDisplay}>
       <Text style={styles.hourDisplayHeader}>{weekDay}</Text>
-      <Text style={styles.hourDisplayHeader}>{month}-{date}</Text>
+      <Text style={styles.hourDisplayHeader}>{month} {date}</Text>
       <Image source={icon} style={styles.hourIcon} />
       <Text style={styles.hourDescription}>{description}</Text>
       <Text style={styles.dayTemp}>{props.max}<Text style={styles.degree}>&deg;</Text>

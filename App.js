@@ -28,8 +28,8 @@ export default function App() {
 
   async function getLocation() {
     setIsFetching(true);
-    let {granted} = await Location.requestPermissionsAsync()
-    if (granted) {
+    let {status} = await Location.requestForegroundPermissionsAsync();
+    if (status === "granted") {
       let location = await Location.getCurrentPositionAsync({accuracy: 6});
       let region = await Location.reverseGeocodeAsync({
         latitude: location.coords.latitude,
